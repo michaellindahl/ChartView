@@ -14,7 +14,7 @@ public struct LineView: View {
     public var legend: String?
     public var style: ChartStyle
     public var darkModeStyle: ChartStyle
-    public var valueSpecifier:String
+    public var valueSpecifier: String
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var showLegend = false
@@ -29,7 +29,8 @@ public struct LineView: View {
                 title: String? = nil,
                 legend: String? = nil,
                 style: ChartStyle = Styles.lineChartStyleOne,
-                valueSpecifier: String? = "%.1f") {
+                valueSpecifier: String? = "%.1f",
+                curvedLines: Bool = true) {
         
         self.data = ChartData(points: data)
         self.title = title
@@ -37,6 +38,7 @@ public struct LineView: View {
         self.style = style
         self.valueSpecifier = valueSpecifier!
         self.darkModeStyle = style.darkModeStyle != nil ? style.darkModeStyle! : Styles.lineViewDarkMode
+        self.curvedLines = curvedLines
     }
     
     public var body: some View {
@@ -71,7 +73,8 @@ public struct LineView: View {
                              minDataValue: .constant(nil),
                              maxDataValue: .constant(nil),
                              showBackground: false,
-                             gradient: self.style.gradientColor
+                             gradient: self.style.gradientColor,
+                             curvedLines: self.curvedLines
                         )
                         .offset(x: 30, y: 0)
                         .onAppear(){
