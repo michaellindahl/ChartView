@@ -15,6 +15,7 @@ public struct LineView: View {
     public var style: ChartStyle
     public var darkModeStyle: ChartStyle
     public var valueSpecifier: String
+    public var curvedLines: Bool
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var showLegend = false
