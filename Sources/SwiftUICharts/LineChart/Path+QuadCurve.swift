@@ -193,8 +193,8 @@ extension Path {
                 y: step.y * segment.controlPoint1.y
             )
             let c2 = CGPoint(
-                x: step.x * segment.controlPoint1.x,
-                y: step.y * segment.controlPoint1.y
+                x: step.x * segment.controlPoint2.x,
+                y: step.y * segment.controlPoint2.y
             )
 
             path.addCurve(to: p2, control1: c1, control2: c2)
