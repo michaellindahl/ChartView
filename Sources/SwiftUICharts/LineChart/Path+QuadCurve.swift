@@ -188,7 +188,16 @@ extension Path {
                 y: step.y * CGFloat(points[pointIndex] - offset)
             )
             let segment = controlPoints[pointIndex-1]
-            path.addCurve(to: p2, control1: segment.controlPoint1, control2: segment.controlPoint2)
+            let c1 = CGPoint(
+                x: step.x * segment.controlPoint1.x,
+                y: step.y * segment.controlPoint1.y
+            )
+            let c2 = CGPoint(
+                x: step.x * segment.controlPoint1.x,
+                y: step.y * segment.controlPoint1.y
+            )
+
+            path.addCurve(to: p2, control1: c1, control2: c2)
         }
         return path
     }
